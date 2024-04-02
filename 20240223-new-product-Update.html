@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>產品管理</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container my-5">
+    <h2 class="mb-4">產品列表</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">產品編號</th>
+          <th scope="col">產品名稱</th>
+          <th scope="col">產品價格</th>
+          <th scope="col">產品介紹</th>
+          <th scope="col">產品圖片</th>
+          <th scope="col">操作</th>
+        </tr>
+      </thead>
+      <tbody id="productList">
+        <!-- 產品列表將透過 JavaScript 插入 -->
+      </tbody>
+    </table>
+    <button id="addProduct" class="btn btn-primary"
+      onclick="location.href='20240223-new-product-Create.html'">新增產品</button>
+  </div>
+
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      function fetchProducts() {
+        $.ajax({
+          url: "20240223-newproject-product-api.php", // 读取产品数据的API端点
+          type: "GET",
+          dataType: "json",
+          success: function (response) {
+            if (response.state && response.data) {
+              var rows = "";
+              response.data.forEach(function (product) {
+                rows +=
+                  `<tr>
+                    <td><input type="text" class="form-control itemNO" value="${product.itemNO}"></td>
+                    <td><input type="text" class="form-control productName" value="${product.name}"></td>
+                    <td><input type="text" class="form-control productPrice" value="${product.price}"></td>
+                    <td><input type="text" class="form-control productIntro" value="${product.introduce}"></td>
+                    <td><img src="${product.image}" height="50" class="img-preview"></td>
+                    <td>
+                      <input type="file" class="form-control productImage" name="productImage">
+                      <button class="btn btn-info updateProduct" data-itemno="${product.itemNO}">更新</button>
+                      <button class="btn btn-danger deleteProduct" data-itemno="${product.itemNO}">刪除</button>
+                    </td>
+                  </tr>`;
+              });
+              $("#productList").html(rows);
+            } else {
+              alert("產品抓取失敗: " + response.message);
+            }
+          },
+          error: function () {
+            alert("產品列表加載失敗。");
+          }
+        });
+      }
+
+      fetchProducts(); // 页面加载时调用
+
+      $(document).on("click", ".updateProduct", function () {
+        var row = $(this).closest("tr");
+        var itemNO = row.find(".itemNO").val();
+        var name = row.find(".productName").val();
+        var price = row.find(".productPrice").val();
+        var introduce = row.find(".productIntro").val();
+        var imageInput = row.find('.productImage')[0];
+
+        var formData = new FormData();
+        formData.append('action', 'update');
+        formData.append('itemNO', itemNO);
+        formData.append('productName', name);
+        formData.append('productPrice', price);
+        formData.append('productIntro', introduce);
+        if (imageInput.files[0]) {
+          formData.append('productImage', imageInput.files[0]);
+        }
+
+        $.ajax({
+          url: "20240223-new-product-Updata-api.php", // 确保路径正确
+          type: "POST",
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+            if (response.state) {
+              alert("產品更新成功");
+              fetchProducts();
+            } else {
+              alert("產品更新失败: " + response.message);
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("更新错误:", xhr, status, error);
+            alert("更新產品时发生错误。");
+          }
+        });
+      });
+
+      $(document).on("click", ".deleteProduct", function () {
+        var itemNO = $(this).data("itemno");
+
+        if (confirm("確定要刪除產品編號 " + itemNO + " 嗎？")) {
+          $.ajax({
+            url: "20240223-new-product-Updata-api.php", 
+            type: "POST",
+            data: { action: "delete", itemNO: itemNO },
+            success: function (response) {
+              if (response.state) {
+                alert("產品刪除成功");
+                fetchProducts();
+              } else {
+                alert("產品刪除失败: " + response.message);
+              }
+            },
+            error: function (xhr, status, error) {
+              console.error("刪除错误:", xhr, status, error);
+              alert("刪除產品时发生错误。");
+            }
+          });
+        }
+      });
+
+    });
+  </script>
+</body>
+
+</html>

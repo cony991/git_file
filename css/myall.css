@@ -1,0 +1,106 @@
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap');/* 可以改變字體，字體網站給的連結*/
+
+ :root {
+   --mycolor01:#D3B7D8;/* 預先設定顏色並編號*/
+   --mycolor02:#A13E97;
+   --mycolor03:#632A7E;
+   --mycolor04:#280E3B;
+   --mycolor05:#EAD6BD;
+   --mycolor06:#A88661;
+   --mycolor07:#504E63;
+   --mycolor09:#67788f;
+   --mycolor10:#30a066;
+   --mycolor11:#307ca0;
+   --mycolor12:#75a030;
+   --mycolor13:#30a05b;
+   --mycolor14:rgba(0, 0, 0, .1);/*a是透明質*/
+   --textcolor01: #f3f1f5;
+   --textcolor02: rgb(46, 177, 144);
+   --textcolor03: rgb(15, 17, 173);
+   --textcolor04: rgb(0, 0, 0, .1);
+ }
+
+ body{
+    font-family: 'Noto Sans TC', sans-serif; /* 可以改變字體，字體網站給的訊息*/
+ }
+
+ .fw-900{
+   font-weight: 900;
+ }
+
+ .fw-800{
+   font-weight: 800;
+ }
+
+ .fw-700{
+   font-weight: 700;
+ }
+
+ .fw-600{
+   font-weight: 600;
+ }
+
+ .fw-500{
+   font-weight: 500;
+ }
+
+ .fw-400{
+   font-weight: 400;
+ }
+
+ .fw-300{
+   font-weight: 300;
+ }
+
+ .fw-200{
+   font-weight: 200;
+ }
+
+ .fw-100{
+   font-weight: 100;
+ }
+
+.mr-1{
+  margin-right: 1px;
+}
+
+.mr-2{
+  margin-right: 2px;
+}
+
+.mr-3{
+  margin-right: 3px;
+}
+
+.mr-4{
+  margin-right: 4px;
+}
+
+.mr-5{
+  margin-right: 5px;
+}
+
+.textcolor01{
+    color: var(--textcolor01);
+}
+
+.textcolor02{
+    color: var(--textcolor02);
+}
+
+.textcolor03{
+    color: var(--textcolor03);
+}
+
+.bg-cover{
+  background-position: center center;/*bgp*/
+  background-size: cover; /*bgs*/
+}
+
+.demo {
+  width: 70%;
+  padding: 25px;
+  margin: 25px;
+  border: 2px solid var(--mycolor01);
+}
+

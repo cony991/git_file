@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            /* background-color: #ccc; */
+            background-image: linear-gradient(45deg, rgba(53, 30, 184, 0.05), rgba(201, 13, 13, 0.7));
+            /* linear-gradient漸變效果 */
+            left: 67%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-section-pointer {
+            position: relative;
+        }
+
+        .timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            top: 0;
+            left: -13px;
+            border-radius: 50%;
+            border: 8px solid #b81111;
+
+        }
+
+        .timeline-section-pointer:hover::before {
+            width: 28px;
+            height: 28px;
+            background-color: #fff;
+            border: 8px solid #8f057c;
+        }
+
+        .row-divider {
+            border-right: 1px solid #8f057c;
+            margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .s07_text {
+                z-index: 10;
+                background-color: rgba(0, 0, 0, 0.2);
+                color: white;
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+
+            .s07_img {
+                left: 0;
+            }
+
+            .s09_text {
+                z-index: 10;
+                background-color: rgba(0, 0, 0, 0.2);
+                color: white;
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+
+            .s9_img {
+                right: 0;
+            }
+        }
+
+        /* 新增的CSS樣式 */
+        .product-image-container {
+            width: 100%;
+            /* 設定圖片容器寬度為100%，即其父容器的寬度 */
+            height: 0;
+            /* 初始高度為0 */
+            padding-top: 56.25%;
+            /* 根據圖片的寬高比（16:9的比例）來設定padding-top */
+            position: relative;
+            /* 相對定位，為了絕對定位圖片 */
+        }
+
+        .product-image {
+            position: absolute;
+            /* 絕對定位，相對於其父元素.product-image-container */
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* 圖片寬度為100%，高度會自動調整以保持原有的寬高比 */
+            height: 100%;
+            /* 圖片高度為100%，這將基於padding-top的值 */
+            object-fit: cover;
+            /* 設定圖片如何填充容器 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- section 01 -->
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="text-end py-1">
+                <!-- 這裡是fb跟twitter icon的按鈕 -->
+                <a href="#"><i class="fa-brands fa-square-facebook text-white fa-2x wow animate__bounce"
+                        data-wow-duration="2s" data-wow-delay="0s" data-wow-iteration="1"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter text-white fa-2x wow animate__bounce"
+                        data-wow-duration="2s" data-wow-delay="0s" data-wow-iteration="1"></i> </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 02 -->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <h5 style="color: white;">section 02</h5>
+                <a class="navbar-brand" href="#">
+                    <!--icon小圖-->
+                    <i class="fa-solid fa-cake-candles fa-2x text-danger wow animate__shakeX" data-wow-duration="2s"
+                        data-wow-delay="0s" data-wow-iteration="1"></i>
+                </a>
+                <!-- 這是網頁上三條橫線的功能展開按鈕 -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!--me-auto這個元素(兩個按鈕)將被推送到最右側-->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active wow animate__shakeX" data-wow-duration="2s" data-wow-delay="0s"
+                                data-wow-iteration="1" aria-current="page" href="#">首頁</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                產品種類
+                                <!--下拉連結 -->
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- 下拉連結對section id="#s05"設定 -->
+                                <li><a class="dropdown-item" href="#s05">烘培訪</a></li>
+                                <li><a class="dropdown-item" href="#s06">特色蛋糕</a></li>
+                                <li>
+                                    <!--分隔線下連結 -->
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#s07">活動看板</a></li>
+                                <li><a class="dropdown-item" href="#s08">獲獎紀錄</a></li>
+                                <li><a class="dropdown-item" href="#s09">品牌價值</a></li>
+                                <li><a class="dropdown-item" href="#s10">資料輸入</a></li>
+                                <li><a class="dropdown-item" href="#s11">徵才活動</a></li>
+                                <li><a class="dropdown-item" href="#s12">商城連結</a></li>
+                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#s04">公司介紹</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                高級功能
+                            </a>
+                            <!-- id="s02_member_btn01是為了下面登入使用高級功能設立 -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item disabled" target="_blank"
+                                        href="20240123-product01-Create.html" id="s02_member_btn01">商品建檔</a></li>
+                                <li><a class="dropdown-item disabled" target="_blank"
+                                        href="20240123-product01-Read.html" id="s02_member_btn02">商品瀏覽</a></li>
+                                <li><a class="dropdown-item disabled" target="_blank" href="member-control_panel.html"
+                                        id="s02_member_btn03">會員管理</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div>
+
+
+                        <!--右邊兩個按鈕 -->
+                        <!-- 代碼來源https://getbootstrap.com/docs/5.3/components/modal/ -->
+                        <!-- 下面兩個按鈕代碼與 loginModal為組合帳號密碼登入 -->
+                        <!--  data-bs-target常用需背-->
+                        <span class="text-warning h3" id="user_message"></span>
+                        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal"
+                            id="s02_login_btn">登入</button>
+                        <button class="btn btn-success wow animate__heartBeat" data-bs-toggle="modal"
+                            data-bs-target="#registerModal" data-wow-duration="1s" data-wow-delay="0s"
+                            data-wow-iteration="5" id="s02_reg_btn">註冊</button>
+                        <button class="btn btn-danger d-none" id="s02_logout_btn">登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- section 02 loginModal -->
+    <!-- 代碼來源https://getbootstrap.com/docs/5.3/components/modal/ -->
+    <!-- 這是登入鈕按下出現的對話框 -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-warning">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">會員登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="login_username" class="form-label">帳號</label>
+                        <!-- 下面為輸入框 -->
+                        <input type="text" class="form-control" id="login_username" name="login_username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="login_password" class="form-label">密碼</label>
+                        <!--type="password" 輸入密碼會隱藏  -->
+                        <input type="password" class="form-control" id="login_password" name="login_password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="login_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- section 02 registerModal 會員登入註冊btn-->
+    <!-- 這是註冊鈕按下後出現的對話框 -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- 註冊視窗變大 -->
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">會員註冊</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6 row-divider">
+                            <h2>會員守則</h2>
+                            <p>尊重他人：彼此尊重是我們社群的基石，言行要友善，不侵犯他人的尊嚴和權利。</p>
+                            <p>保護隱私：尊重他人的隱私，不洩露個人資訊，共同建立一個安全的網路環境。</p>
+                            <p>不惡意行為：禁止發布攻擊性、歧視性或惡意信息，保持友好與合作的社群氛圍。</p>
+                            <p>合法使用：請遵守法律法規，不進行非法活動，維護公序良俗。</p>
+                            <p>互助合作：共同促進社群的發展，樂於分享與幫助，建立積極、融洽的會員關係。</p>
+                            <!-- 同意按鈕代碼來源https://getbootstrap.com/docs/5.3/forms/checks-radios/#checks -->
+                            <!-- id="chk01"檢查同意按鈕是否打勾的設定 -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="chk01" name="chk01">
+                                <label class="form-check-label" for="chk01">
+                                    同意
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <!-- id="username"檢查帳號符合規定 -->
+                                <label for="username" class="form-label">帳號</label>
+                                <input type="text" class="form-control" placeholder="帳號字數4-8!" id="username"
+                                    name="username">
+                                <div class="valid-feedback">帳號可使用</div>
+                                <div class="invalid-feedback">帳號已存在</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">密碼</label>
+                                <input type="password" class="form-control" placeholder="密碼字數5-10!" id="password"
+                                    name="password">
+                                <div class="valid-feedback">密碼符合規則</div>
+                                <div class="invalid-feedback">密碼不符合規則</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="re_password" class="form-label">確認密碼</label>
+                                <input type="password" class="form-control" placeholder="確認密碼!" id="re_password"
+                                    name="re_password">
+                                <div class="valid-feedback">密碼一致</div>
+                                <div class="invalid-feedback">密碼不一致</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="email自字數1~10!" id="email"
+                                    name="email">
+                                <div class="valid-feedback">Email符合規則</div>
+                                <div class="invalid-feedback">Email不符合規則</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="reg_btn">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </li>
+    </ul>
+    <!-- <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">search</button>
+                </form> -->
+    </div>
+    </div>
+    </nav>
+    <div class="banner bg-info bg-cover"></div>
+    <div class="container">
+        <h2 class="text-danger fw-900 mt-3">|產品介紹<small class="fw-100 text-muted">Product</small></h2>
+        <div class="row" id="mydata">
+
+
+            <div class="footer bg-dark text-white text-center fw-900 py-3 mt-4">
+                @甜食 2023製作
+            </div>
+            <script src="js/bootstrap.bundle.min.js"></script>
+            <script src="js/jquery-3.7.1.min.js"></script>
+            <script>
+
+                $(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "20240223-newproject-product-api.php",
+                        dataType: "json", // 確保返回的資料類型是 JSON
+                        success: function (data) {
+                            console.log(data); // 查看返回的完整資料
+                            if (data.state === true) {
+                                showdata(data.data);
+                            } else {
+                                alert(data.message);
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.error('Ajax 請求失敗:', textStatus, errorThrown); // 除錯訊息
+                            alert("串接錯誤!");
+                        }
+                    });
+                });
+
+                function showdata(products) {
+                    $("#mydata").empty();
+                    products.forEach(function (product) {
+                        var orderPageUrl = "20240223-new-product-order.html?name=" + encodeURIComponent(product.name) + "&price=" + encodeURIComponent(product.price);
+                        var productHTML = `
+                    <div class="col-md-4 mt-3 d-flex flex-column align-items-center">
+                        <div class="product-image-container">
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p>價格: ${product.price}</p>
+                        <p>${product.introduce}</p>
+                        <div class="w-100 d-flex">
+                            <a href="20231226-cake-details.html" target="_blank" class="btn btn-success flex-fill">查看</a>
+                            <button onclick="location.href='${orderPageUrl}'" class="btn btn-primary flex-fill ml-2">下單</button>
+                        </div>
+                    </div>
+                `;
+                        $("#mydata").append(productHTML);
+                    });
+                }
+            </script>
+</body>
+
+</html>

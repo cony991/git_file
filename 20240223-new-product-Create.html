@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品創建</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        #imagePreview {
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-5">
+        <h2 class="mb-4">新產品建立</h2>
+        <form id="newProductForm" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="productItemNO" class="form-label">產品編號</label>
+                        <input type="text" class="form-control" id="productItemNO" name="itemNO" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productName" class="form-label">產品名稱</label>
+                        <input type="text" class="form-control" id="productName" name="productName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productPrice" class="form-label">產品價格</label>
+                        <input type="text" class="form-control" id="productPrice" name="productPrice" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productImage" class="form-label">產品圖片</label>
+                        <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productIntro" class="form-label">產品介紹</label>
+                        <textarea class="form-control" id="productIntro" name="productIntro" rows="5"
+                            required></textarea>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="button" id="submitBtn" class="btn btn-success me-md-2">提交產品</button>
+                        <button type="reset" class="btn btn-danger">取消</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img id="imagePreview" src="#" alt="Image Preview" class="img-fluid">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#submitBtn').on('click', function (e) {
+                e.preventDefault(); // 防止表單的預設提交行為
+
+                var formData = new FormData($('#newProductForm')[0]); // 收集表單資料
+
+                $.ajax({
+                    url: '20240223-new-product-Create-api.php', // 後端的處理URL
+                    type: 'POST',
+                    data: formData,
+                    processData: false, // 不要處理資料
+                    contentType: false, // 不要設定內容類型，讓瀏覽器自行判斷
+                    success: function (response) {
+                        console.log("Response:", response);
+                        if (response.state) {
+                            alert('產品創建成功');
+                            $('#newProductForm')[0].reset(); // 重置表單
+                            $('#imagePreview').attr('src', ''); // 清除圖片預覽
+                        } else {
+                            alert('產品創建失敗: ' + response.message); // 顯示錯誤訊息
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('AJAX error:', textStatus, errorThrown, jqXHR.responseText);
+                        alert('發生錯誤: ' + errorThrown); // 顯示AJAX請求錯誤訊息
+                    }
+                });
+            });
+
+            $('#productImage').on('change', function () {
+                // 當圖片檔案欄位發生變化時，更新圖片預覽
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreview').attr('src', e.target.result); // 將讀取的圖片顯示在預覽元素中
+                }
+                reader.readAsDataURL(this.files[0]); // 讀取選擇的圖片檔案
+            });
+        });
+    </script>
+
+</body>
+
+</html>

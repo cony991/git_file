@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newproject</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            /* background-color: #ccc; */
+            background-image: linear-gradient(45deg, rgba(53, 30, 184, 0.05), rgba(201, 13, 13, 0.7));
+            /* linear-gradient漸變效果 */
+            left: 67%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-section-pointer {
+            position: relative;
+        }
+
+        .timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            top: 0;
+            left: -13px;
+            border-radius: 50%;
+            border: 8px solid #b81111;
+
+        }
+
+        .timeline-section-pointer:hover::before {
+            width: 28px;
+            height: 28px;
+            background-color: #fff;
+            border: 8px solid #8f057c;
+        }
+
+        .row-divider {
+            border-right: 1px solid #8f057c;
+            margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .s07_text {
+                z-index: 10;
+                background-color: rgba(0, 0, 0, 0.2);
+                color: white;
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+
+            .s07_img {
+                left: 0;
+            }
+
+            .s09_text {
+                z-index: 10;
+                background-color: rgba(0, 0, 0, 0.2);
+                color: white;
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+
+            .s9_img {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- section 01 -->
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="text-end py-1">
+                <!-- 這裡是fb跟twitter icon的按鈕 -->
+                <a href="#"><i class="fa-brands fa-square-facebook text-white fa-2x wow animate__bounce"
+                        data-wow-duration="2s" data-wow-delay="0s" data-wow-iteration="1"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter text-white fa-2x wow animate__bounce"
+                        data-wow-duration="2s" data-wow-delay="0s" data-wow-iteration="1"></i> </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 02 -->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <h5 style="color: white;">section 02</h5>
+                <a class="navbar-brand" href="#">
+                    <!--icon小圖-->
+                    <i class="fa-solid fa-beer-mug-empty"></i>
+                </a>
+                <!-- 這是網頁上三條橫線的功能展開按鈕 -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!--me-auto這個元素(兩個按鈕)將被推送到最右側-->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="http://192.168.10.53/202312/20240223-newproject.html">首頁</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                產品種類
+                                <!--下拉連結 -->
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- 下拉連結對section id="#s05"設定 -->
+                                <li><a class="dropdown-item" href="#s05">產品介紹</a></li>
+                                <li><a class="dropdown-item" href="#s06">特色蛋糕</a></li>
+                                <li>
+                                    <!--分隔線下連結 -->
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#s07">活動看板</a></li>
+                                <li><a class="dropdown-item" href="#s08">獲獎紀錄</a></li>
+                                <li><a class="dropdown-item" href="#s09">品牌價值</a></li>
+                                <li><a class="dropdown-item" href="#s10">資料輸入</a></li>
+                                <li><a class="dropdown-item" href="#s11">徵才活動</a></li>
+                                <li><a class="dropdown-item" href="#s12">商城連結</a></li>
+                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page"
+                                href="http://192.168.10.53/202312/20240223-newproject-product.html">產品介紹</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                後台管理
+                            </a>
+                            <!-- id="s02_member_btn01是為了下面登入使用高級功能設立 -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item disabled" target="_blank"
+                                        href="20240123-product01-Create.html" id="s02_member_btn01">產品維護</a></li>
+                                <li><a class="dropdown-item disabled" target="_blank"
+                                        href="20240123-product01-Read.html" id="s02_member_btn02">商品管理</a></li>
+                                <li><a class="dropdown-item disabled" target="_blank"
+                                        href="20240223-new-member-level.html" id="s02_member_btn03">會員管理</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div>
+
+
+                        <!--右邊兩個按鈕 -->
+                        <!-- 代碼來源https://getbootstrap.com/docs/5.3/components/modal/ -->
+                        <!-- 下面兩個按鈕代碼與 loginModal為組合帳號密碼登入 -->
+                        <!--  data-bs-target常用需背-->
+                        <span class="text-warning h3" id="user_message"></span>
+                        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal"
+                            id="s02_login_btn">登入</button>
+                        <button class="btn btn-success wow animate__heartBeat" data-bs-toggle="modal"
+                            data-bs-target="#registerModal" data-wow-duration="1s" data-wow-delay="0s"
+                            data-wow-iteration="5" id="s02_reg_btn">註冊</button>
+                        <button class="btn btn-danger d-none" id="s02_logout_btn">登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- section 02 loginModal -->
+    <!-- 代碼來源https://getbootstrap.com/docs/5.3/components/modal/ -->
+    <!-- 這是登入鈕按下出現的對話框 -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-warning">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">會員登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="login_username" class="form-label">帳號</label>
+                        <!-- 下面為輸入框 -->
+                        <input type="text" class="form-control" id="login_username" name="login_username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="login_password" class="form-label">密碼</label>
+                        <!--type="password" 輸入密碼會隱藏  -->
+                        <input type="password" class="form-control" id="login_password" name="login_password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="login_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- section 02 registerModal 會員登入註冊btn-->
+    <!-- 這是註冊鈕按下後出現的對話框 -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- 註冊視窗變大 -->
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">會員註冊</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6 row-divider">
+                            <h2>會員守則</h2>
+                            <p>尊重他人：彼此尊重是我們社群的基石，言行要友善，不侵犯他人的尊嚴和權利。</p>
+                            <p>保護隱私：尊重他人的隱私，不洩露個人資訊，共同建立一個安全的網路環境。</p>
+                            <p>不惡意行為：禁止發布攻擊性、歧視性或惡意信息，保持友好與合作的社群氛圍。</p>
+                            <p>合法使用：請遵守法律法規，不進行非法活動，維護公序良俗。</p>
+                            <p>互助合作：共同促進社群的發展，樂於分享與幫助，建立積極、融洽的會員關係。</p>
+                            <!-- 同意按鈕代碼來源https://getbootstrap.com/docs/5.3/forms/checks-radios/#checks -->
+                            <!-- id="chk01"檢查同意按鈕是否打勾的設定 -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="chk01" name="chk01">
+                                <label class="form-check-label" for="chk01">
+                                    同意
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <!-- id="username"檢查帳號符合規定 -->
+                                <label for="username" class="form-label">帳號</label>
+                                <input type="text" class="form-control" placeholder="帳號字數4-8!" id="username"
+                                    name="username">
+                                <div class="valid-feedback">帳號可使用</div>
+                                <div class="invalid-feedback">帳號已存在</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">密碼</label>
+                                <input type="password" class="form-control" placeholder="密碼字數5-10!" id="password"
+                                    name="password">
+                                <div class="valid-feedback">密碼符合規則</div>
+                                <div class="invalid-feedback">密碼不符合規則</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="re_password" class="form-label">確認密碼</label>
+                                <input type="password" class="form-control" placeholder="確認密碼!" id="re_password"
+                                    name="re_password">
+                                <div class="valid-feedback">密碼一致</div>
+                                <div class="invalid-feedback">密碼不一致</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="email自字數1~10!" id="email"
+                                    name="email">
+                                <div class="valid-feedback">Email符合規則</div>
+                                <div class="invalid-feedback">Email不符合規則</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="reg_btn">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- section 03 -->
+    <!--幻燈片自動播放，您需要將 data-bs-ride="false" 改為 data-bs-ride="carousel"間隔時間data-bs-interval="1000"  -->
+    <!-- 幻燈片下方的五個按鈕 -->
+    <section>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+            <div class="carousel-indicators">
+                <!-- 幻燈片左右按鈕有五張圖 -->
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                    aria-label="Slide 5"></button>
+
+            </div>
+            <!-- 幻燈片圖跟字 -->
+            <div class="carousel-inner">
+                <!-- bootstrap.Carousel Captions套件 -->
+                <!-- 第一張幻燈片active只能有一個 -->
+                <div class="carousel-item bg-cover active"
+                    style="background-image: url(images/party000.jpg); height: 100vh;">
+                    <div class="carousel-caption d-none d-md-block p-4 rounded-5 shadow-sm">
+                        <h5 class="fw-900">section 03我們的使命</h5>
+                        <p class="fw-500">
+                            我們致力於透過每一杯手工調製的飲料，傳遞健康和快樂。我們相信小小的一杯，能夠帶來大大的改變，為顧客的日常生活增添色彩。
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item bg-cover" style="background-image: url(images/party001.jpg); height: 100vh;">
+                    <div class="carousel-caption d-none d-md-block p-4 rounded-5 shadow-sm">
+                        <h5 class="fw-900">產品哲學</h5>
+                        <p class="fw-500">
+                            從田間到杯中，我們堅持使用最優質的原料。每一步製作過程都經過精心設計，以確保每一杯飲品都能達到最高品質標準。
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item bg-cover" style="background-image: url(images/party002.jpg); height: 100vh;">
+                    <div class="carousel-caption d-none d-md-block p-4 rounded-5 shadow-sm">
+                        <h5 class="fw-900">創新之旅</h5>
+                        <p class="fw-500">
+                            我們不斷探索和創新，引入新口味和獨特飲品。我們相信創新是推動我們前進的動力，也是讓顧客持續回來的原因。
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item bg-cover" style="background-image: url(images/party003.jpg); height: 100vh;">
+                    <div class="carousel-caption d-none d-md-block p-4 rounded-5 shadow-sm">
+                        <h5 class="fw-900">可持續發展</h5>
+                        <p class="fw-500">
+                            我們承諾保護環境，減少對地球的影響。通過可持續的採購和經營實踐，我們致力於建立一個更美好的未來。
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item bg-cover" style="background-image: url(images/party004.jpg); height: 100vh;">
+                    <div class="carousel-caption d-none d-md-block p-4 rounded-5 shadow-sm">
+                        <h5 class="fw-900">社區貢獻</h5>
+                        <p class="fw-500">
+                            我們積極參與社區建設，透過各種計畫和活動，支持當地發展和公益事業。我們相信，真正的成功來自於對社會的貢獻。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- section 04 -->
+    <!-- 這個section設定成需會員登入才能看到，搜尋 顯示s04 -->
+    <section class="d-none" id="s04">
+        <div class="container-fluid">
+            <!-- align-items-center水平置中 很重要 -->
+            <!-- linear-gradient背景圖漸層色 -->
+            <div class="row align-items-center text-center"
+                style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));">
+                <!-- 可以鎖定背景圖不動並設定顯示出來的部分 -->
+                <!-- background-attachment及後面的設定為顯示圖片的左右 -->
+                <div class="col-md-5 bg-cover"
+                    style="background-image: url(images/01.jpg); height: 600px; background-attachment: fixed; background-size: cover; background-position: -200px center;">
+                </div>
+                <div class="col-md-7 p-5">
+                    <h1 class="mb-4 wow animate__backInRight" data-wow-duration="2s" data-wow-delay="0s"
+                        data-wow-iteration="1">section 04西元1900年<span class="text-success fw-900">全國第一家</span></h1>
+                    <h1 class="mb-4 wow animate__backInRight" data-wow-duration="3s" data-wow-delay="0s"
+                        data-wow-iteration="1">專業的烘培專賣店</h1>
+                    <p class="mb-4 wow animate__backInRight" data-wow-duration="4s" data-wow-delay="0s"
+                        data-wow-iteration="1">新鮮烘培美點，滿足您的味蕾。</p>
+                    <p class="mb-4 wow animate__backInRight" data-wow-duration="5s" data-wow-delay="0s"
+                        data-wow-iteration="1">屢獲殊榮，品味保證，口碑見證。</p>
+                    <p class="mb-4 wow animate__backInRight" data-wow-duration="6s" data-wow-delay="0s"
+                        data-wow-iteration="1">嚴選優質食材，烘焙技術專業認證。</p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3>年銷售額</h3>
+                            <!-- 設定需計數的地方counter01與下面js相呼應 -->
+                            <h2 class="fw-900 counter01">2,000,000元</h2>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>獲獎數目</h3>
+                            <h2 class="fw-900 counter02">36/項</h2>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>專業認證</h3>
+                            <h2 class="fw-900 counter03">16/項</h2>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>銷售據點</h3>
+                            <h2 class="fw-900 counter04">20/個</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- section 07 -->
+    <!-- 這裡重點在於左邊的圖不跟container對齊，右邊文字與container對齊 -->
+    <!-- 先寫row(圖片)再寫container(內文) -->
+
+    <section id="s07" style="position: relative;">
+        <div class="row">
+            <!-- 先做左邊圖片先切5 -->
+            <!-- top: 0; bottom: 0:圖片與上下間距為0 增加內文撐開左邊的圖片 -->
+            <div class="col-md-5 justify-content-end s07_img"
+                style="background-image: url(images/party005.jpg); position: absolute; top: 0; bottom: 0;"></div>
+        </div>
+        <div class="container">
+            <!-- justify-content-end把文字靠右 -->
+            <div class="row justify-content-end">
+                <div class="col-md-7 mt-5 s07_text">
+                    <h2>section 07茶之韻：百年傳承的味道</h2>
+                    <p>茶之韻秉承百年製茶工藝，每一杯手搖飲都蘊含著歷史的味道。從選茶到泡茶，每一步都精心製作，帶給你最純正的茶香。</p>
+                    <button class="btn btn-outline-success">查看更多</button>
+                    <div class="row mt-5">
+                        <div class="col-md-6 wow animate__bounceInRight" data-wow-duration="2s" data-wow-delay="0s"
+                            data-wow-iteration="1">
+                            <h3>鮮果盛宴：每一口都是自然的禮讚</h3>
+                            <p>我們堅持使用當季新鮮水果，現場榨汁製作每一杯飲品。保證每一口都是自然的甜，讓你感受到大自然的恩賜。</p>
+                        </div>
+                        <div class="col-md-6 wow animate__bounceInRight" data-wow-duration="3s" data-wow-delay="0s"
+                            data-wow-iteration="1">
+                            <h3>繽紛時刻：手工調製的色彩之旅</h3>
+                            <p>繽紛時刻專注於手工調製的飲品，每一款都是色彩與味覺的完美結合。我們的創意飲品將帶領你踏上一場視覺與味覺的繽紛之旅。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- section 09 -->
+    <!-- 先寫container(內文)再寫row(圖片) -->
+    <section id="s09" style="position: relative;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 s07_text">
+                    <h2 class="fw-900 text-center wow animate__jello text-info" data-wow-duration="5s"
+                        data-wow-delay="0s" data-wow-iteration="1">section09品牌價值介紹</h2>
+                    <p>我們的品牌承諾提供不僅是飲料，而是一種生活態度。我們追求的是品質、創新與可持續發展的完美平衡，旨在創造與顧客之間的深刻連結。</p>
+                    <dl class="row">
+                        <dt class="col-sm-3">Description lists</dt>
+                        <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+
+                        <dt class="col-sm-3">Term</dt>
+                        <dd class="col-sm-9">
+                            <p>Definition for the term.</p>
+                            <p>And some more placeholder definition text.</p>
+                        </dd>
+
+                        <dt class="col-sm-3">Another term</dt>
+                        <dd class="col-sm-9">This definition is short, so no extra paragraphs or anything.</dd>
+
+                        <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+                        <dd class="col-sm-9">This can be useful when space is tight. Adds an ellipsis at the end.</dd>
+
+                        <dt class="col-sm-3">Nesting</dt>
+                        <dd class="col-sm-9">
+                            <dl class="row">
+                                <dt class="col-sm-4">Nested definition list</dt>
+                                <dd class="col-sm-8">I heard you like definition lists. Let me put a definition list
+                                    inside your definition list.</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!-- justify-content-end靠右對齊 -->
+        <div class="row justify-content-end">
+            <div class="col-md-5 bg-info bg-cover s9_img"
+                style="position: absolute; top: 0; bottom: 0; background-image: url(images/party007.jpg);"></div>
+        </div>
+    </section>
+
+    <!-- section 10 -->
+    <section id="s10">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17314.890143214696!2d120.60814972032107!3d24.17147805604332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1704328723002!5m2!1szh-TW!2stw"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="" class="form-label wow animate__headShake" data-wow-duration="1s"
+                            data-wow-delay="0s" data-wow-iteration="1">姓名section 10</label>
+                        <input type="text" class="form-control is-invalid">
+                        <div class="valid-feedback">輸入符合規定!</div>
+                        <div class="invalid-feedback">輸入不符合規定!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label wow animate__headShake" data-wow-duration="2s"
+                            data-wow-delay="0s" data-wow-iteration="1">電話</label>
+                        <input type="phone" class="form-control is-invalid">
+                        <div class="valid-feedback">輸入符合規定!</div>
+                        <div class="invalid-feedback">輸入不符合規定!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label wow animate__headShake" data-wow-duration="3s"
+                            data-wow-delay="0s" data-wow-iteration="1">Email</label>
+                        <input type="email" class="form-control is-invalid">
+                        <div class="valid-feedback">輸入符合規定!</div>
+                        <div class="invalid-feedback">輸入不符合規定!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label wow animate__headShake" data-wow-duration="4s"
+                            data-wow-delay="0s" data-wow-iteration="1">人數</label>
+                        <input type="number" class="form-control is-invalid" min="1" max="10">
+                        <div class="valid-feedback">輸入符合規定!</div>
+                        <div class="invalid-feedback">輸入不符合規定!</div>
+                    </div>
+                    <!-- 代碼來源https://getbootstrap.com/docs/5.3/forms/checks-radios/#approach -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                            checked> <!-- 勾選 -->
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            參加
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            不參加
+                        </label>
+                    </div>
+                    <div class="text-end">
+                        <button class="btn btn-outline-secondary">取消</button>
+                        <button class="btn btn-primary">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 11 -->
+    <section id="s11">
+        <div class="row">
+            <div class="col-md-6 py-5 bg-cover" style="background-image: url(images/party008.jpg);">
+                <div class="row">
+                    <div class="col-md-8 p-3 ms-5 rounded-4" style="background-color: rgba(0, 0, 0, 0.4);">
+                        <small class="text-bg-warning fw-300 badge mb-2">加入我們</small>
+                        <h2 class="fw-900 text-white">section 11徵才 - 業務經理數名</h2>
+                        <p class="fw-300 text-white">
+                            我們正在尋找充滿激情、充滿創意的業務經理，加入我們的團隊。您將負責開拓市場、建立夥伴關係，並推動公司業務持續發展。如果您擁有卓越的溝通能力、業務頭腦和領導才華，並渴望在一個充滿活力的環境中發揮所長，我們誠摯邀請您加入我們，與我們一同攜手打造更美好的明天。
+                        </p>
+                        <a href="#" class="btn btn-outline-danger">詳細資料</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 py-5 bg-cover" style="background-image: url(images/party009.jpg);">
+                <div class="row">
+                    <div class="col-md-8 p-3 ms-5 rounded-4" style="background-color: rgba(0, 0, 0, 0.4);">
+                        <small class="text-bg-success fw-300 badge mb-2">加入我們</small>
+                        <h2 class="fw-900 text-white">徵才 - 工讀生數名</h2>
+                        <p class="fw-300 text-white">
+                            我們誠摯招募工讀生，機會就在你的手中。這是一個充滿活力、充滿學習機會的團隊，我們歡迎熱情、有活力的你加入我們，參與各種有趣的專案，發揮你的創意和實力。如果你渴望在一個充滿活力的環境中成長，與我們攜手共創未來，我們期待與你相遇！
+                        </p>
+                        <a href="#" class="btn btn-outline-success">詳細資料</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 12 -->
+    <!-- 代碼來源https://getbootstrap.com/docs/5.3/components/navs-tabs/ -->
+    <section id="s12">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active disabled fw-900" aria-current="page" href="#">Copy right XXXX.2024</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">momo購物商城</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">蝦皮購物商城</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- github計數器Counter-Up2 -->
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+    <script>
+        new WOW().init();
+    </script>
+    <script>
+        // github上Counter-Up2的計數器js代碼，[section 04年銷售額.獲獎等]
+        const counterUp = window.counterUp.default
+
+        const callback = entries => {
+            entries.forEach(entry => {
+                const el = entry.target
+                if (entry.isIntersecting && !el.classList.contains('is-visible')) {
+                    counterUp(el, {
+                        duration: 2000,
+                        delay: 16,
+                    })
+                    el.classList.add('is-visible')
+                }
+            })
+        }
+        // 可以而外寫js 再載入(JavaScript)
+        // 創建一個IntersectionObserver實例，傳入一個回調函數callback和一個配置對象{ threshold: 1 }
+        const IO = new IntersectionObserver(callback, { threshold: 1 })
+        // 設定需計數的地方.counter01，el01
+        // 使用在351行左右的記數器代碼
+        // 選取第一個需要計數的元素，這個元素的類名是counter01
+        const el01 = document.querySelector('.counter01')
+        IO.observe(el01)// 讓IntersectionObserver開始觀察(el01)這個元素
+
+        const el02 = document.querySelector('.counter02')
+        IO.observe(el02)
+
+        const el03 = document.querySelector('.counter03')
+        IO.observe(el03)
+
+        const el04 = document.querySelector('.counter04')
+        IO.observe(el04)
+
+        //***********************************************************
+        var flag_username = false;  //註冊帳號username立旗檢查
+        var flag_password = false;  //註冊密碼是否符合規範的旗標初始值為 false，表示密碼目前不符合規範。
+        var flag_re_password = false;//確認密碼
+        var flag_email = false;
+        var flag_chk01 = false;     //同意註冊按鈕命名chk01立旗檢查，section 04會員註冊同意打勾
+        $(function () {
+            console.log('Cookies before AJAX call:', getCookie("UID01")); // 這將顯示當前的UID01 cookie值
+            //判斷是否登入( jQuery 框架)
+            if (getCookie("UID01") != "") { //從瀏覽器的 cookie 中獲取名稱為 "UID01" 的 cookie 的值。
+                //UID01存在, 傳遞至後端api 判斷是否合法
+                var dataJSON = {}; //創建一個空的 JavaScript 物件，用於存儲將要發送到後端的數據，var dataJSON是JavaScript宣告變數的格式
+                dataJSON["UID01"] = getCookie("UID01");
+                //JSON.stringify() 函式，用於將 JavaScript 物件轉換為 JSON 字串，這裡則是將dataJSON 物件轉換為 JSON 格式的字串並印出
+                console.log(JSON.stringify(dataJSON));
+                $.ajax({
+                    type: "POST",
+                    url: "member-Check_UID-api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_Check_UID, // 請求成功，則調用名為 showdata_Check_UID 的函式來處理從後端返回的數據。
+                    error: function () {
+                        alert("error-member-Check_UID-api.php");
+                    }
+                });
+            }
+
+            //登出按鈕監聽 #s02_logout_btn
+            //清除名為 "UID01" 的 cookie，並將網頁重新導向到指定的頁面。cookie 的有效期為 7 天。
+            $("#s02_logout_btn").click(function () {
+                // 使用 setCookie 函數將名為 "UID01" 的 cookie 的值設置""為空字串，並設定有效期為 7 天
+                setCookie("UID01", "", 7);
+                location.href = "20240223-newproject.html";
+            });
+
+
+
+
+            //即時監聽 註冊(帳號) #username
+            //功能為在輸入框輸入內容時，檢查文字長度是否符合要求，如果符合則將其傳遞給後端進行帳號存在性的檢查。
+            //選取 id 為 "username" 的元素，並綁定了 "input" 和 "propertychange" 兩種事件的監聽
+            // input 事件：當輸入框的值被修改時觸發。
+            // propertychange 事件：在 IE 浏覽器中，當輸入框的值變化時（包括使用鼠標或鍵盤輸入），會觸發這個事件。
+            $("#username").bind("input propertychange", function () {
+                // console.log($(this).val().length); is-invalid
+                // 字數大於3小於9
+                if ($(this).val().length > 3 && $(this).val().length < 9) {
+                    var dataJSON = {};
+                    //將輸入框 #username 中的值存儲在 dataJSON 物件中，以 "Username" 作為屬性名。
+                    dataJSON["Username"] = $("#username").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    $.ajax({
+                        type: "POST",
+                        url: "member-check_uni_api.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata_check_uni,
+                        error: function () {
+                            alert("error-member-check_uni_api.php");
+                        }
+                    });
+                } else {
+                    //不符合規定
+                    //移除綠色邊框(用於標記輸入框的內容為有效)
+                    $(this).removeClass('is-valid');
+                    //加入紅色邊框(用於標記輸入框的內容為無效)
+                    $(this).addClass('is-invalid');
+                    //標記帳號是否符合規範的旗標初始值為 false，表示帳號目前不符合規範。
+                    flag_username = false;
+                }
+            });
+
+            //即時監聽 註冊(密碼) #password
+            //.bind()是 jQuery 綁定函式，input 事件用於捕捉用戶輸入，propertychange 事件可以用於監聽元素的屬性變化
+            $("#password").bind("input propertychange", function () {
+                // console.log($(this).val().length); is-invalid
+                //條件密碼長度>4，<11
+                if ($(this).val().length > 4 && $(this).val().length < 11) {
+                    //符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_password = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_password = false;
+                }
+            });
+
+            //即時監聽 註冊(確認密碼) #re_password
+            $("#re_password").bind("input propertychange", function () {
+                //密碼輸入框中的值.val()等於上方代碼設置的密碼輸入框的值相同。
+                if ($(this).val() == $("#password").val()) {
+                    //符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_re_password = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_re_password = false;
+                }
+            });
+
+            //即時監聽 註冊(Email) #email
+            $("#email").bind("input propertychange", function () {
+                // console.log($(this).val().length); is-invalid
+                if ($(this).val().length > 0 && $(this).val().length < 11) {
+                    //符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_email = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_email = false;
+                }
+            });
+
+            //監聽 註冊(下方同意打勾框)checkbox #chk01，這是同意框按鈕打勾，不用計算字串長度
+            //chk01 type是checkbox(同意打勾框)，.change是監聽chk01勾選或取消勾選
+            //checkbox可以用.change()來監聽它的改變(例如飲料加點的勾選監聽)其他選項可以查詢用什麼來監聽
+            $("#chk01").change(function () {
+                // ":checked"容易打錯
+                if ($(this).is(":checked")) {
+                    //console.log("遵守");
+                    flag_chk01 = true;
+                } else {
+                    //console.log("不遵守");  
+                    flag_chk01 = false;
+                }
+            });
+
+            //註冊按鈕監聽 #reg_btn，這是監聽註冊同意按鈕，要五項都符合
+            $("#reg_btn").click(function () {
+                // console.log("test");             
+                if (flag_username && flag_password && flag_re_password && flag_email && flag_chk01) {
+                    //{"Username":"XX", "Password":"XXX", "Email":"XXXXX"}
+                    //創建了一個名為 dataJSON 的變數。如果在函式內部聲明一個變數，它的作用僅限於該函式內部。因此，即使在不同的函式(function)中都聲明了同名的變數，它們彼此之間是獨立的，互不干擾。
+                    var dataJSON = {};
+                    //$("#username").val();這是輸入框的值，賦予dataJSON["Username"]並轉json格式，並兩值相同
+                    dataJSON["Username"] = $("#username").val();
+                    dataJSON["Password"] = $("#password").val();
+                    dataJSON["Email"] = $("#email").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    //傳遞至後端執行註冊行為
+                    $.ajax({
+                        type: "POST",
+                        url: "member-Create-api.php",
+                        data: JSON.stringify(dataJSON),//換成JSON格式字串
+                        dataType: "json",
+                        success: showdata,
+                        error: function () {
+                            alert("error-member-Create-api.php");
+                        }
+                    });
+
+                } else {
+                    alert("欄位有錯請修正!");
+                }
+            });
+
+
+            //登入按鈕監聽 #login_btn
+            $("#login_btn").click(function () {
+                // console.log($("#login_username").val()+$("#login_password").val());
+                //{"Username":"XX", "Password":"XXX"}
+                var dataJSON = {};
+                //$("#login_username").val() 獲取到的值轉json格式
+                dataJSON["Username"] = $("#login_username").val();
+                dataJSON["Password"] = $("#login_password").val();
+                console.log(JSON.stringify(dataJSON));
+
+                //傳遞至後端執行登入行為
+                $.ajax({
+                    type: "POST",
+                    url: "member-login_api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_login,
+                    error: function () {
+                        alert("error-member-login_api.php");
+                    }
+                });
+            });
+        });
+
+
+        function showdata(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);//最後註冊鈕確認完成後，對話框會關閉
+                location.href = "20240223-newproject.html"//然後刷新轉跳到此頁面
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_check_uni(data) {
+            console.log(data);
+            if (data.state) {
+                //帳號不存在, 可以使用!
+                $("#username").removeClass('is-invalid');//不能用this
+                $("#username").addClass('is-valid');
+                flag_username = true;
+            } else {
+                //帳號存在, 不可以使用!
+                $("#username").removeClass('is-valid');
+                $("#username").addClass('is-invalid');
+                flag_username = false;
+            }
+        }
+
+        function showdata_login(data) {
+            console.log('Login Data:', data);
+            if (data.state) {
+                alert(data.message);
+                // 確保 data.data 是個陣列，且至少有一個元素
+                if (Array.isArray(data.data) && data.data.length > 0) {
+                    var user = data.data[0];
+                    console.log('User Object:', user); // 顯示用戶的data
+                    if (user && user.Level) { // 確保 user 存在，且 user.Level 存在
+                        console.log('User Level:', user.Level); // 這應該記錄用戶的級別
+                        setCookie("UID01", user.UID01, 7);
+                        $("#loginModal").modal("hide");
+                        $("#user_message").text(user.Username + "登入中!");
+
+                        //隱藏登入註冊按鈕(登入後)
+                        $("#s02_login_btn").addClass("d-none");
+                        $("#s02_reg_btn").addClass("d-none");
+
+                        // 檢查用戶等級並更新後台管理按鈕的可用性
+                        if (user.Level === "S900") {
+                            console.log('Enabling admin buttons');
+                            // 用戶等級為S900時，啟用後台管理功能
+                            $("#s02_member_btn01").removeClass("disabled");
+                            $("#s02_member_btn02").removeClass("disabled");
+                            $("#s02_member_btn03").removeClass("disabled");
+                        } else {
+                            console.log('Disabling admin buttons');
+                            // 用戶等級不是S900時，禁用後台管理功能
+                            $("#s02_member_btn01").addClass("disabled");
+                            $("#s02_member_btn02").addClass("disabled");
+                            $("#s02_member_btn03").addClass("disabled");
+                        }
+                        $("#s02_logout_btn").removeClass("d-none"); // 顯示登出按鈕(登入後)
+                        $("#s04").removeClass("d-none"); // 顯示s04(會員登入後)
+                    } else {
+                        console.log('User Level is undefined in received data:', user);
+                        alert('無法獲取用戶等級！');
+                    }
+                } else {
+                    console.log('Invalid data format received:', data.data);
+                    alert('數據格式不正確！');
+                }
+            } else {
+                console.log('Login failed with message:', data.message);
+                alert(data.message);
+            }
+        }
+
+        // 假設showdata_Check_UID函數也需要進行相同的修改
+        function showdata_Check_UID(data) {
+            console.log('Cookies:', document.cookie); 
+            console.log('Check UID Data:', data);
+            if (data.state) {
+                console.log('Complete data object:', data); // 顯示完整的data對象
+                console.log('User data:', data.data); // 顯示用戶的data
+                var user = data.data;
+                var userLevel = user.Level; // 同上，確保與數據結構匹配
+                $("#user_message").text(user.Username + "登入中!");
+                $("#s02_login_btn").addClass("d-none");
+                $("#s02_reg_btn").addClass("d-none");
+
+                // 檢查用戶等級並更新後台管理按鈕的可用性
+                if (userLevel === "S900") {
+                    console.log('Enabling admin buttons'); // 調試語句
+                    // 用戶等級為S900時，啟用後台管理功能
+                    $("#s02_member_btn01").removeClass("disabled");
+                    $("#s02_member_btn02").removeClass("disabled");
+                    $("#s02_member_btn03").removeClass("disabled");
+                } else {
+                    console.log('Invalid data received', data); // 調試語句
+                    // 用戶等級不是S900時，禁用後台管理功能
+                    $("#s02_member_btn01").addClass("disabled");
+                    $("#s02_member_btn02").addClass("disabled");
+                    $("#s02_member_btn03").addClass("disabled");
+                }
+
+                //顯示登出按鈕
+                $("#s02_logout_btn").removeClass("d-none");
+                //顯示s04
+                $("#s04").removeClass("d-none");
+            } else {
+                console.log('Invalid state or data received', data);
+                // 可以考慮在這裡添加用戶反饋，比如顯示錯誤消息
+            }
+        }
+
+
+        //w3s  setCookie 可以存js
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        //w3s  getCookie 可以存js 登入
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        //如果要寫會員用停權，商品也是用上下架，11-1 switch 應用.pdf要自己做
+        //我會想要商品使用停權，而不是會員，會員只分等級。
+
+    </script>
+</body>
+
+</html>

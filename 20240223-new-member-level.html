@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>會員等級管理</title>
+    <!-- 引入Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- 引入jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+    <script>
+        // 當文檔加載完成時執行
+        $(document).ready(function () {
+            function loadMemberList() {
+                console.log("正在載入會員列表...");
+                $.ajax({
+                    type: "GET",
+                    url: "20240223-new-member-Real.api.php", // 確保這是正確的路徑
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.state) {
+                            var members = response.data;
+                            var tableBody = $('#member-table tbody');
+                            tableBody.empty(); // 清空現有列表
+                            $.each(members, function (index, member) {
+                                var statusChecked = member.Level !== 'SUSPENDED';
+                                var row = `<tr>
+                            <td>${member.ID}</td>
+                            <td>${member.Username}</td>
+                            <td>${member.Level}</td>
+                            <td>
+                                <select onchange="updateMemberLevel(${member.ID}, this.value)">
+                                    <option value="B100" ${member.Level === 'B100' ? 'selected' : ''}>B100</option>
+                                    <option value="A200" ${member.Level === 'A200' ? 'selected' : ''}>A200</option>
+                                    <option value="S900" ${member.Level === 'S900' ? 'selected' : ''}>S900</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" ${statusChecked ? 'checked' : ''} onchange="toggleMemberStatus(${member.ID}, this.checked)">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>`;
+                                tableBody.append(row);
+                            });
+                        } else {
+                            alert("無法加載會員列表：" + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("AJAX請求失敗：", error);
+                        alert("發生錯誤：" + error);
+                    }
+                });
+            }
+
+            // 調用函數加載會員列表
+            loadMemberList();
+        });
+        function updateMemberLevel(memberId, newLevel) {
+            var dataJSON = {
+                memberId: memberId,
+                newLevel: newLevel
+            };
+            $.ajax({
+                type: "POST",
+                url: "20240223-update-member-level.api.php", // 確保這是您API的正確路徑
+                data: JSON.stringify(dataJSON),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    if (response.state) {
+                        alert("會員等級已更新");
+                        location.reload(); // 或者可以更新頁面上的顯示而不重載
+                    } else {
+                        alert("更新失敗：" + response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert("發生錯誤：" + error);
+                }
+            });
+        }
+
+        // 切換會員狀態的函數
+        function toggleMemberStatus(memberId, isEnabled) {
+            var dataJSON = {
+                memberId: memberId,
+                isEnabled: isEnabled // 這裡的值應該是true或false
+            };
+            $.ajax({
+                type: "POST",
+                url: "20240223-new-member-status.api.php", // 確保這是您API的正確路徑
+                data: JSON.stringify(dataJSON),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    if (response.state) {
+                        alert("會員狀態已更新");
+                        location.reload(); // 或者可以更新頁面上的顯示而不重載
+                    } else {
+                        alert("更新失敗：" + response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert("發生錯誤：" + error);
+                }
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>更新會員等級</h2>
+        <table id="member-table" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Current Level</th>
+                    <th>Change Level</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 會員資料將透過JavaScript動態插入 -->
+            </tbody>
+        </table>
+    </div>
+    <!-- JavaScript腳本將在下一部分提供 -->
+</body>
+
+</html>
